@@ -29,7 +29,7 @@ namespace detail {
     detail::cloneablerule *proxy_;
     public:
     template<typename T>
-      explicit anyrule(T rule) 
+      anyrule(T rule) 
     : proxy_(new detail::ruleeraser<T>(new T(rule)))
     {}
 
@@ -37,6 +37,10 @@ namespace detail {
     bool test(const fileinfo& info);
 
     anyrule(const anyrule& rhs); 
+
+    anyrule& operator=(anyrule rhs);
+    private:
+      void swap(anyrule& rhs);
   };
 
 } 
