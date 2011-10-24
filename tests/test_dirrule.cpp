@@ -9,5 +9,8 @@ int main()
    if( d.test(fi) ) return 1;
    regularfilerule r;
    if( !r.test(fi) ) return 1;
+   fileinfo di;
+   stat(".", &di.stat_block);
+   if( !d.test(di) ) return 1;
    return 0;
 }

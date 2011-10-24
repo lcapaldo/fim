@@ -1,8 +1,9 @@
 #include <string>
+#include "rule.h"
 
 namespace fim {
 
-class namerule
+class namerule : public rule
 {
   struct insensitive_tag_ret { };
   typedef insensitive_tag_ret (*insensitive_tag)();
@@ -15,6 +16,7 @@ class namerule
   ~namerule();
 
   bool operator()(const std::string& filename) const;
+  virtual bool test(const fileinfo& info);
 
   private:
     std::string pattern_;
