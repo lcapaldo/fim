@@ -12,6 +12,7 @@ class namerule : public rule
 
   explicit namerule(const std::string& pattern);
   namerule(const std::string& pattern, insensitive_tag);
+  namerule(const namerule&);
 
   ~namerule();
 

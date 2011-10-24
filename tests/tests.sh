@@ -8,3 +8,8 @@ rm -f test_dirrule && g++ -g -I.. test_dirrule.cpp ../rule.cpp -o test_dirrule &
 
 err=$?
 if [ $err -ne 0 ]; then echo "Error $err"; else echo "Yay"; fi
+
+rm -f test_anyrule && g++ -g -I.. test_anyrule.cpp ../namerule.cpp ../rule.cpp ../anyrule.cpp -o test_anyrule && ./test_anyrule
+
+err=$?
+if [ $err -ne 0 ]; then echo "Error $err"; else echo "Yay"; fi

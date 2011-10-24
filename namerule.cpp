@@ -16,6 +16,10 @@ namerule::namerule(const string& pattern, namerule::insensitive_tag)
 : pattern_(pattern), caseinsensitive_(true)
 {}
 
+namerule::namerule(const namerule& rhs)
+: pattern_(rhs.pattern_), caseinsensitive_(rhs.caseinsensitive_)
+{}
+
 namerule::~namerule()
 {}
 

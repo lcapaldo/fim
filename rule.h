@@ -1,3 +1,5 @@
+#ifndef FIM_RULE_H
+#define FIM_RULE_H
 namespace fim {
 
 class fileinfo;
@@ -8,3 +10,4 @@ class rule {
   virtual ~rule();
 };
 }
+#endif
