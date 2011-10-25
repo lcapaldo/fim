@@ -3,3 +3,4 @@ tests/test_dirrule
 tests/test_namerule
 tests/test_anyrule
 fim_dumb
+fim_interactive
