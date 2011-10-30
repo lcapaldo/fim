@@ -1,3 +1,5 @@
+#ifndef H_FIM_ANDRULE
+#define H_FIM_ANDRULE
 #include "anyrule.h"
 
 namespace fim {
@@ -15,3 +17,4 @@ class andrule : public rule
    ~andrule();
 };
 }
+#endif

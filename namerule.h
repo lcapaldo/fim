@@ -1,3 +1,5 @@
+#ifndef H_FIM_NAMERULE
+#define H_FIM_NAMERULE
 #include <string>
 #include "rule.h"
 
@@ -26,3 +28,4 @@ class namerule : public rule
   static insensitive_tag_ret insensitive_tag_keyword();
 };
 }
+#endif

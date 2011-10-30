@@ -1,3 +1,5 @@
+#ifndef H_FIM_VACOUSRULE
+#define H_FIM_VACOUSRULE
 #include "rule.h"
 namespace fim {
 class vacousrule : public rule
@@ -6,3 +8,4 @@ class vacousrule : public rule
   virtual bool test(const fileinfo&);
 };
 }
+#endif

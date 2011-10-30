@@ -1,3 +1,5 @@
+#ifndef H_FIM_STATMODERULE
+#define H_FIM_STATMODERULE
 #include "rule.h"
 #include "fileinfo.h"
 
@@ -16,5 +18,4 @@ typedef statmoderule<S_IFDIR> directoryrule;
 typedef statmoderule<S_IFREG> regularfilerule;
 
 }
-
-
+#endif

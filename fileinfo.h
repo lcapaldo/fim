@@ -1,3 +1,5 @@
+#ifndef H_FIM_FILEINFO
+#define H_FIM_FILEINFO
 #include <string>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -10,3 +12,4 @@ namespace fim {
    struct stat stat_block;
   };
 }
+#endif

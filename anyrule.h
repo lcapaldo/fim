@@ -1,3 +1,5 @@
+#ifndef H_FIM_ANYRULE
+#define H_FIM_ANYRULE
 #include "rule.h"
 
 namespace fim {
@@ -44,3 +46,4 @@ namespace detail {
   };
 
 } 
+#endif
