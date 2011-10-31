@@ -5,10 +5,46 @@
 #include "vacousrule.h"
 #include <dirent.h>
 #include <string.h>
+#include <iostream>
+
+using namespace fim;
+
+std::string fullpath(std::string dirname, std::string filename)
+{
+  return dirname + "/" + filename;
+}
+
+template <typename F>
+void traverse_dir_rec(std::string dirname, DIR *dir, anyrule& rules, F onhit)
+{
+  dirent *ent;
+  fileinfo info;
+  while(ent = readdir(dir))
+  {
+    info.filename = fullpath(dirname, ent->d_name);
+    stat(ent->d_name, &info.stat_block);
+    if( rules.test(info) )
+    {
+      onhit(info);
+    }
+    if( directoryrule().test(info) && 
+        !namerule("*/.").test(info) && 
+        !namerule("*/..").test(info) )
+    {
+      DIR *dir1 = opendir(info.filename.c_str());
+      if (dir1)traverse_dir_rec(info.filename, dir1, rules, onhit);
+      if (dir1) closedir(dir1);
+    } 
+  }
+}
+
+void printit(const fileinfo& fi) 
+{
+  std::cout << fi.filename << std::endl;
+}
 
 int main(int argc, char **argv)
 {
-   using namespace fim;
    anyrule rules = vacousrule();
    
    for(int i = 1; i < argc; ++i)
@@ -26,17 +62,7 @@ int main(int argc, char **argv)
    }
 
    DIR *dir = opendir(".");
-   dirent *ent;
-   fileinfo info;
-   while(ent = readdir(dir))
-   {
-      info.filename = ent->d_name;
-      stat(ent->d_name, &info.stat_block);
-      if( rules.test(info) )
-      {
-        printf("%s\n", info.filename.c_str());
-      }
-   }
+   traverse_dir_rec(".", dir, rules, &printit);   
    closedir(dir);
    
    return 0;
