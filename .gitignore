@@ -2,5 +2,6 @@
 tests/test_dirrule
 tests/test_namerule
 tests/test_anyrule
+tests/test_vacousrule
 fim_dumb
 fim_interactive

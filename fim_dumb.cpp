@@ -58,6 +58,10 @@ int main(int argc, char **argv)
         rules = andrule(rules, namerule(argv[++i]));
      } else if( strcmp(argv[i], "-iname") == 0 ) {
         rules = andrule(rules, namerule(argv[++i], namerule::insensitive));
+     } else if( strcmp(argv[i], "-true") == 0 ) {
+        rules = andrule(rules, vacousrule());
+     } else if( strcmp(argv[i], "-false") == 0 ) {
+       rules = andrule(rules, vacousrule(false));
      }
    }
 
