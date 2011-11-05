@@ -9,7 +9,7 @@ class vacousrule : public rule
   explicit vacousrule(bool result); 
   virtual bool test(const fileinfo&);
   private:
-  bool m_result;
+  const bool m_result;
 };
 }
 #endif
