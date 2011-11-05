@@ -9,7 +9,7 @@ bool anyrule::test(const fileinfo& info)
 
 
 anyrule::anyrule(const anyrule& rhs)
-: proxy_(rhs.proxy_->clone())
+: proxy_(rhs.cloner_(rhs.proxy_)), cloner_(rhs.cloner_)
 {}
 
 anyrule::~anyrule()
@@ -25,4 +25,5 @@ anyrule& anyrule::operator=(anyrule rhs)
 void anyrule::swap(anyrule& rhs)
 {
   std::swap(proxy_, rhs.proxy_);
+  std::swap(cloner_, rhs.cloner_);
 }
