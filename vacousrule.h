@@ -2,14 +2,11 @@
 #define H_FIM_VACOUSRULE
 #include "rule.h"
 namespace fim {
+template<bool result = true>
 class vacousrule : public rule
 {
   public:
-  vacousrule();
-  explicit vacousrule(bool result); 
-  virtual bool test(const fileinfo&);
-  private:
-  const bool m_result;
+  virtual bool test(const fileinfo&) { return result; }
 };
 }
 #endif

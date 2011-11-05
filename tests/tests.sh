@@ -14,7 +14,7 @@ rm -f test_anyrule && g++ -g -I.. test_anyrule.cpp ../namerule.cpp ../rule.cpp .
 err=$?
 if [ $err -ne 0 ]; then echo "Error $err"; else echo "Yay"; fi
 
-rm -f test_vacousrule && g++ -g -I.. test_vacousrule.cpp ../vacousrule.cpp ../rule.cpp -o test_vacousrule && ./test_vacousrule
+rm -f test_vacousrule && g++ -g -I.. test_vacousrule.cpp ../rule.cpp -o test_vacousrule && ./test_vacousrule
 
 err=$?
 if [ $err -ne 0 ]; then echo "Error $err"; else echo "Yay"; fi

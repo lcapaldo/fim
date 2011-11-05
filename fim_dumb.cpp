@@ -45,7 +45,7 @@ void printit(const fileinfo& fi)
 
 int main(int argc, char **argv)
 {
-   anyrule rules = vacousrule();
+   anyrule rules = vacousrule<>();
    
    for(int i = 1; i < argc; ++i)
    {
@@ -59,9 +59,9 @@ int main(int argc, char **argv)
      } else if( strcmp(argv[i], "-iname") == 0 ) {
         rules = andrule(rules, namerule(argv[++i], namerule::insensitive));
      } else if( strcmp(argv[i], "-true") == 0 ) {
-        rules = andrule(rules, vacousrule());
+        rules = andrule(rules, vacousrule<>());
      } else if( strcmp(argv[i], "-false") == 0 ) {
-       rules = andrule(rules, vacousrule(false));
+       rules = andrule(rules, vacousrule<false>());
      }
    }
 
