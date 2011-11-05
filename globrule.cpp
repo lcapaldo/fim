@@ -7,33 +7,33 @@ using namespace fim;
 using std::string;
 
 
-namerule::insensitive_tag namerule::insensitive = &namerule::insensitive_tag_keyword;
+const globrule::insensitive_tag globrule::insensitive = &globrule::insensitive_tag_keyword;
 
-namerule::namerule(const string& pattern) : pattern_(pattern), caseinsensitive_(false)
+globrule::globrule(const string& pattern) : pattern_(pattern), caseinsensitive_(false)
 {}
 
-namerule::namerule(const string& pattern, namerule::insensitive_tag)
+globrule::globrule(const string& pattern, globrule::insensitive_tag)
 : pattern_(pattern), caseinsensitive_(true)
 {}
 
-namerule::namerule(const namerule& rhs)
+globrule::globrule(const globrule& rhs)
 : pattern_(rhs.pattern_), caseinsensitive_(rhs.caseinsensitive_)
 {}
 
-namerule::~namerule()
+globrule::~globrule()
 {}
 
-bool namerule::operator()(const std::string& filename) const
+bool globrule::operator()(const std::string& filename) const
 {
    return fnmatch(pattern_.c_str(), filename.c_str(), 
        caseinsensitive_ ? FNM_CASEFOLD : 0) == 0; 
 }
 
-bool namerule::test(const fileinfo& info)
+bool globrule::test(const fileinfo& info)
 {
-   return (*this)(info.filename);
+   return (*this)(matchee(info));
 }
 
 
-namerule::insensitive_tag_ret namerule::insensitive_tag_keyword() { std::abort(); }
+globrule::insensitive_tag_ret globrule::insensitive_tag_keyword() { std::abort(); }
 

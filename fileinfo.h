@@ -9,6 +9,7 @@ namespace fim {
   class fileinfo {
    public:
    ::std::string filename;
+   ::std::string dirname;
    struct stat stat_block;
   };
 }
